@@ -1,28 +1,43 @@
 
+import java.util.Scanner;
+
 class Student {
 
     int roll_no;
     String name;
 
     Student(int roll_no, String name) {
-        this.name = name;
         this.roll_no = roll_no;
+        this.name = name;
     }
 }
 
 public class JavaObject {
 
     public static void main(String[] args) {
-        Student[] arr;
-        arr = new Student[5];
-        arr[0] = new Student(1, "Sahil");
-        arr[1] = new Student(2, "Ansh");
-        arr[2] = new Student(3, "Abhishek");
-        arr[3] = new Student(4, "Aakash");
-        arr[4] = new Student(5, "Aditya");
+        Scanner scan = new Scanner(System.in);
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print("Roll no. -> " + arr[i].roll_no + " Name -> " + arr[i].name + "\n");
+        System.out.print("\nEnter the number of entries you want -> ");
+        int entry = scan.nextInt();
+        scan.nextLine(); // Consume the leftover newline character
+
+        Student[] arr = new Student[entry];
+
+        for (int j = 0; j < entry; j++) {
+            System.out.println("Enter your Name -> ");
+            String name1 = scan.nextLine();  // Read the full name
+            System.out.println("Enter your Roll no. -> ");
+            int roll_no1 = scan.nextInt();
+            scan.nextLine(); // Consume the leftover newline character
+
+            arr[j] = new Student(roll_no1, name1);
         }
+
+        System.out.println("\nStudent Details:");
+        for (int i = 0; i < entry; i++) {
+            System.out.println("Roll no: " + arr[i].roll_no + " | Name: " + arr[i].name);
+        }
+
+        scan.close(); // Close the scanner to prevent memory leaks
     }
 }
