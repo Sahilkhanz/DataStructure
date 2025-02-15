@@ -79,7 +79,7 @@ public class DeQue {
                 rear = -1;
                 front = -1;
             } else {
-                rear = (rear - 1) % capacity;
+                rear = (rear - 1 + capacity) % capacity;
             }
             size--;
         }
